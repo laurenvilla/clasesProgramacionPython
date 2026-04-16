@@ -1,0 +1,31 @@
+1. Cómo podemos concatenar un número a un string? (.5 punto)
+2. De qué tipo son las variables justifica la respuesta (1.5 puntos)
+ a = "1"
+ b = 1.0
+ c = 1.5 + True
+ d = 1.5 + 2.5
+ e = 1 + True
+ f = False + True
+ g = True * 0
+3. Manipulando la variable palabra (concatenando y con los métodos de strings), convertirla (2 puntos)
+ a. cambiar algunas letras por números
+	palabra = "hola" 
+	en "Ho14"
+ b. remover espacios
+	palabra = "  hola"
+	en "hola"
+ c. cambiar mayúsculas y minúsculas
+    palabra = "HoLa"
+	en "hOlA"
+ d. poner la primera en mayúscula
+	palabra = "hola"
+	en "Hola"
+4. Explica qué hacen los métodos y da un ejemplo: (2 puntos)
+ a. count()
+ b. find()
+ c. isdigit()
+ d. replace()
+5. Qué problema tiene declarar estas variables? (1.5 puntos)
+ oración larga = 'hola mundo'
+ palabra = 'hola' 'mundo'
+6. Investigar "fstring": qué son, cómo se usan y un ejemplo. (2.5 puntos)

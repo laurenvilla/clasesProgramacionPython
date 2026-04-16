@@ -1,0 +1,42 @@
+Proyecto final
+
+(4 puntos) - es forzoso hacerlo 
+Dado un fasta, encontrar todas las potenciales proteínas pequeñas, que cumplan:
+1. Inician con ATG
+2. Terminan con TAA, TAG, TGA y tienen que estar en el mismo marco de lectura (la longitud debe ser múltiplo de 3)
+	ATG	TTT	TTT	TTT	TTT	TTT TTA A  no está en el mismo marco
+	ATG	TTT	TTT	TTT	TTT	TTT TAA  sí está
+3. Tienen tamaño entre 30 y 90 nucleótidos
+
+Hay que imprimir todas las proteínas traducidas en un archivo fasta
+
+Opcionales:
+(2 puntos)
+a. Imprimir resultados en archivo gff con las coordenadas
+(3 puntos)
+b. Hacer una gráfica con el contenido GC del genoma en ventanas de 50bp
+(6 puntos)
+c. Checar si las proteínas tienen los promotores TATA (10bp antes)y TTGACA (35bp antes) 50bp antes de su inicio
+(4 puntos)
+d. Checar si tienen secuencia kozak o shine dalgarno
+(5 puntos)
+e. Buscar las proteínas en la reversa complementaria
+(4 puntos)
+f. Imprimir resultados en csv con toda la información calculada (no tienen que poner toda, sólo la que hayan sacado): secuencia nt, proteína, lugar de inicio, fin, marco de lectura, promotor, ubicación promotor, kozak/shine dalgarno, ubicación kozak/shine
+(4 puntos)
+g. Usar codones de inicio alternativos (https://en.wikipedia.org/wiki/Start_codon)
+
+
+>chr1
+ATGTTTTTTTTTTTTTTTTAA
+TTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTT
+
+>proteína 1
+MPPPPPPPP*
+
+
+Equipos:
+1 - 10 puntos
+2 - 18 puntos
+3 - 24 puntos
