@@ -1,53 +1,104 @@
-complemento
+# Complemento
 
-Tarea 4.
+# Tarea 4.
 
-Escribir la función con el nombre dado en cada número. Debe recibir los parámetros indicados (input) y regrese el valor indicado (output).
-Para los problemas 1-3 hay que probar la función con los ejemplos mostrados, para los 4-6 hay que hacer sus propios casos de prueba y explicar un poco para qué hacen la prueba (ver ejemplo en el problema 1). Está permitido usar código que hemos hecho en clase y los métodos de strings, pero tienen que hacer su propia función con el nombre que se pide.
+#Escribir la función con el nombre dado en cada número. Debe recibir los parámetros indicados (input) y regrese el valor indicado (output).
+#Para los problemas 1-3 hay que probar la función con los ejemplos mostrados, para los 4-6 hay que hacer sus propios casos de prueba y explicar un poco para qué hacen la prueba (ver ejemplo en el problema 1). Está permitido usar código que hemos hecho en clase y los métodos de strings, pero tienen que hacer su propia función con el nombre que se pide.
 
-(1.5 puntos)
-1. MiEsDigito
-Input: un string
-Output: Booleano indicando si el string se compone de puros números
-MiEsDigito("1234") == True # probamos si funciona con puros números
-MiEsDigito("abcd") == False # probamos si funciona con puras letras
-MiEsDigito("123a") == False # probamos si hay números y letras
-MiEsDigito("12a4") == False # probamos que la letra esté a la mitad de los números
+# (1.5 puntos)
+# 1. MiEsDigito
+# Input: un string
+# Output: Booleano indicando si el string se compone de puros números
+# Yo sé que son números, pero quiero que Python me diga si todos son dígitos.
+def MiEsDigito(a):
+    # isdigit() devuelve True cuando todos los caracteres son dígitos.
+    return a.isdigit()
 
-(1.5 puntos)
-2. MiConteo
-Input: dos strings, el segundo es sólo un caracter
-Output: un entero con el número de veces que aparece el segundo string en el primer string
-MiConteo("hola mundo","o") == 2
-MiConteo("hola mundo","h") == 1
-MiConteo("hola mundo"," ") == 1
-MiConteo("hola mundo","r") == 0
-MiConteo("hola mundo","!") == 0
-MiConteo("hola mundo","") == 0
-MiConteo("","A") == 0
+print(MiEsDigito("1234")) # True: todos los caracteres son dígitos.
+print(MiEsDigito("abcd")) # False: son letras.
+print(MiEsDigito("123a")) # False: contiene números y una letra.
+print(MiEsDigito("12a4")) # False: la letra está entre los números.
 
-(2 puntos)
-3. GCcontent
-Input: un string con una secuencia de ADN
-Output: porcentaje de caracteres que son "G" ó "C"
-GCcontent("ATGC") == .5
-GCcontent("") == 0
-GCcontent("AAAA") == 0
-GCcontent("ATgc") == .5
-GCcontent("GGCC") == 1
 
-(2 puntos)
-4. MiSwapCase
-Input: un string
-Output: un string que invierta las mayúsculas y minúsculas
+# (1.5 puntos)
+# 2. MiConteo
+# Input: dos strings; el segundo es un carácter.
+# Output: un entero con el número de veces que aparece el segundo string
+# en el primer string.
+def MiConteo(b, c):
+    conteo = 0
+    for caracter in b:
+        if caracter == c:
+            conteo += 1
+    return conteo
 
-(1 punto)
-5. MiCapitalize
-Input: un string
-Output: un string que tenga la primera letra en mayúsculas
+# Cada prueba compara el resultado de la función con el resultado esperado.
+print(MiConteo("hola mundo", "o") == 2) # True: hay dos letras o.
+print(MiConteo("hola mundo", "h") == 1) # True: hay una letra h.
+print(MiConteo("hola mundo", " ") == 1) # True: hay un espacio.
+print(MiConteo("hola mundo", "r") == 0) # True: no hay r.
+print(MiConteo("hola mundo", "!") == 0) # True: no hay signo de admiración.
+print(MiConteo("hola mundo", "") == 0) # True: la cadena vacía no aparece como carácter.
+print(MiConteo("", "A") == 0) # True: no hay caracteres que contar.
 
-(2 puntos)
-6. EsPar
-Input: Un número entero
-Output: Imprime si el número es par o impar, no debe regresar nada
 
+# (2 puntos)
+# 3. GCcontent
+# Input: un string con una secuencia de ADN.
+# Output: proporción de caracteres que son G o C.
+def GCcontent(d):
+    conteo_gc = 0
+    longitud_total = len(d)
+    if longitud_total == 0:
+        return 0.0
+
+    # upper() permite contar G y C aunque estén escritas en minúsculas.
+    for letra in d.upper():
+        if letra == "G" or letra == "C":
+            conteo_gc += 1
+
+    porcentaje = conteo_gc / longitud_total
+    return porcentaje
+
+print(GCcontent("ATGC"))  # Debe dar 0.5
+print(GCcontent(""))      # Debe dar 0.0 porque la secuencia está vacía.
+print(GCcontent("AAAA"))  # Debe dar 0.0 porque no hay G ni C.
+print(GCcontent("ATgc"))  # Debe dar 0.5; también cuenta minúsculas.
+print(GCcontent("GGCC"))  # Debe dar 1.0 porque todas son G o C.
+
+
+# (2 puntos)
+# 4. MiSwapCase
+# Input: un string.
+# Output: un string que invierta las mayúsculas y minúsculas.
+def MiSwapCase(p):
+    return p.swapcase()
+
+# Prueba: las mayúsculas pasan a minúsculas y las minúsculas a mayúsculas.
+print(MiSwapCase("LaPtoP")) # lApTOp
+
+
+# (1 punto)
+# 5. MiCapitalize
+# Input: un string.
+# Output: un string con la primera letra en mayúscula.
+def MiCapitalize(word):
+    return word.capitalize()
+
+# Prueba: la primera letra queda en mayúscula y las demás en minúscula.
+print(MiCapitalize("unam")) # Unam
+
+
+# (2 puntos)
+# 6. EsPar
+# Input: un número entero.
+# Output: imprime si el número es par o impar y no regresa un valor.
+def EsPar(ent):
+    if ent % 2 == 0:
+        print("es par")
+    else:
+        print("es impar")
+
+# Pruebas con un número par y uno impar.
+EsPar(4) # Imprime "es par".
+EsPar(5) # Imprime "es impar".
