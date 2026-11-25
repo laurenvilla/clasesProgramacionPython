@@ -1,78 +1,131 @@
-complemento
+# Complemento
 
-Tarea 4.
+# Tarea 4.
 
-Escribir funciones que reciban los parámetros indicados (input) y regrese el valor indicado (output).
-Probar la función con los ejemplos mostrados y la función assert
+# Escribir funciones que reciban los parámetros indicados (input) y regresen el valor indicado (output). Probar las funciones con los ejemplos y assert.
 
-(1.5 puntos)
-1. isdigit
-Input: un string
-Output: Booleano indicando si el string se compone de puros números
-assert( isdigit("1234") == True )
-assert( isdigit("abcd") == False )
-assert( isdigit("123a") == False )
-assert( isdigit("12a4") == False )
+# (1.5 puntos)
+# 1. isdigit
+# Input: un string.
+# Output: Booleano indicando si el string se compone de puros números.
+def isdigit(cadena): # Ayuda a saber si todos los caracteres son dígitos.
+    if len(cadena) == 0: # Si el texto está vacío, regresa falso.
+        return False
+    for caracter in cadena: # Revisa cada letra o carácter.
+        if caracter < "0" or caracter > "9": # Comprueba si está fuera del rango 0-9.
+            return False # Si encuentra una letra o símbolo, regresa falso.
+    return True # Si todos los caracteres son dígitos, regresa verdadero.
 
-swapcase
+assert isdigit("1234") == True
+assert isdigit("abcd") == False
+assert isdigit("123a") == False
+assert isdigit("124a5") == False
+print("¡Pruebas de isdigit pasadas con éxito!")
 
-capitalize
 
-es par
+# (1.5 puntos)
+# 2. count
+# Input: dos strings; el segundo es sólo un carácter.
+# Output: un entero con el número de veces que aparece el segundo string
+# en el primer string.
+def count(cadena, caracter): # La cadena es el texto y caracter lo que busco.
+    if caracter == "": # Si el caracter está vacío, regresa 0 para evitar contar vacío.
+        return 0
+    contador = 0
+    for c in cadena:
+        if c == caracter: # Compara cada carácter con el que estoy buscando.
+            contador += 1 # Si coinciden, suma uno al contador.
+    return contador # Al terminar, regresa el número de coincidencias.
+
+assert count("hola mundo", "o") == 2
+assert count("hola mundo", "h") == 1
+assert count("hola mundo", " ") == 1
+assert count("hola mundo", "r") == 0
+assert count("hola mundo", "!") == 0
+assert count("hola mundo", "") == 0
+assert count("", "A") == 0
+print("¡Pruebas de count pasadas con éxito!")
 
 
+# (1.5 puntos)
+# 3. replace
+# Input: tres strings; el segundo y el tercero son sólo un carácter.
+# Output: un string igual al primero, pero reemplazando las ocurrencias
+# del segundo por el tercero.
+def replace(cadena, buscar, reemplazo):
+    if buscar == "": # Si no hay carácter que buscar, deja la cadena igual.
+        return cadena
+    nueva_cadena = ""
+    for caracter in cadena:
+        if caracter == buscar:
+            nueva_cadena += reemplazo # Cambia el carácter encontrado.
+        else:
+            nueva_cadena += caracter # Conserva los demás caracteres.
+    return nueva_cadena
 
-(1.5 puntos)
-2. count
-Input: dos strings, el segundo es sólo un caracter
-Output: un entero con el número de veces que aparece el segundo string en el primer string
-assert( count("hola mundo","o") == 2 )
-assert( count("hola mundo","h") == 1 )
-assert( count("hola mundo"," ") == 1 )
-assert( count("hola mundo","r") == 0 )
-assert( count("hola mundo","!") == 0 )
-assert( count("hola mundo","") == 0 )
-assert( count("","A") == 0 )
+assert replace("hola", "h", "H") == "Hola"
+assert replace("hola", "o", "O") == "hOla"
+assert replace("hola", "", "H") == "hola"
+assert replace("hola", "h", "") == "ola"
+assert replace("holah", "h", "") == "ola"
+print("¡Pruebas de replace pasadas con éxito!")
 
-(1.5 puntos)
-3. replace
-Input: tres strings, el segundo y tercero sólo son un caracter
-Output: un string, que sea igual al primero pero reemplazando las ocurrencias del segundo por el tercero
-assert( replace("hola","h","H") == "Hola" )
-assert( replace("hola","o","O") == "hOla" )
-assert( replace("hola","","H") == "hola" )
-assert( replace("hola","h","") == "ola" )
-assert( replace("holah","h","") == "ola" )
 
-(1.5 puntos)
-4. modulo
-Input: tres números a, b
-Output: el resultado de "a módulo b"
-assert( modulo(2,2) == 0 )
-assert( modulo(2,3) == 2 )
-assert( modulo(2,1) == 0 )
-assert( modulo(-2,2) == 0 )
-assert( modulo(7,3) == 1 )
+# (1.5 puntos)
+# 4. modulo
+# Input: dos números, a y b.
+# Output: el resultado de "a módulo b", que es el residuo de la división.
+def modulo(a, b):
+    return a % b
 
-(1.5 puntos)
-5. complemento
-Input: una string de una secuencia genómica
-Output: un string con la secuencia complementaria
-assert( complemento("A") == "T" )
-assert( complemento("T") == "A" )
-assert( complemento("G") == "C" )
-assert( complemento("C") == "G" )
-assert( complemento("AAAA") == "TTTT" )
-assert( complemento("ATGC") == "TACG" )
-assert( complemento("") == "" )
+assert modulo(2, 2) == 0
+assert modulo(2, 3) == 2
+assert modulo(2, 1) == 0
+assert modulo(-2, 2) == 0
+assert modulo(7, 3) == 1
+print("¡Pruebas de modulo pasadas con éxito!")
 
-(2.5 puntos)
-6. GCcontent
-Input: un string con una secuencia de ADN
-Output: porcentaje de caracteres que son "G" ó "C"
-assert( GCcontent("ATGC") == .5 )
-assert( GCcontent("") == 0 )
-assert( GCcontent("AAAA") == 0 )
-assert( GCcontent("ATgc") == .5 )
-assert( GCcontent("GGCC") == 1 )
 
+# (1.5 puntos)
+# 5. complemento
+# Input: un string con una secuencia genómica de ADN.
+# Output: un string con la secuencia complementaria.
+# En el ADN, A se complementa con T y G se complementa con C.
+def complemento(secuencia):
+    complementos = {"A": "T", "T": "A", "G": "C", "C": "G"}
+    secuencia_complementaria = ""
+    for base in secuencia.upper(): # Revisa cada base, incluso si viene en minúscula.
+        if base not in complementos:
+            raise ValueError("La secuencia sólo puede contener A, T, G y C")
+        secuencia_complementaria += complementos[base]
+    return secuencia_complementaria
+
+assert complemento("A") == "T"
+assert complemento("T") == "A"
+assert complemento("G") == "C"
+assert complemento("C") == "G"
+assert complemento("AAAA") == "TTTT"
+assert complemento("ATGC") == "TACG"
+assert complemento("") == ""
+print("¡Pruebas de complemento pasadas con éxito!")
+
+
+# (2.5 puntos)
+# 6. GCcontent
+# Input: un string con una secuencia de ADN.
+# Output: proporción de caracteres que son "G" o "C".
+def GCcontent(secuencia):
+    if len(secuencia) == 0: # Si no hay secuencia, regresa 0 para evitar dividir entre cero.
+        return 0
+    contador_gc = 0
+    for base in secuencia.upper(): # También cuenta g y c minúsculas.
+        if base == "G" or base == "C":
+            contador_gc += 1
+    return contador_gc / len(secuencia)
+
+assert GCcontent("ATGC") == .5
+assert GCcontent("") == 0
+assert GCcontent("AAAA") == 0
+assert GCcontent("ATgc") == .5
+assert GCcontent("GGCC") == 1
+print("¡Pruebas de GCcontent pasadas con éxito!")
